@@ -85,6 +85,22 @@
                 <input type="radio" id="candidate1" name="vote" value="candidate1">
                 <label for="candidate1">Bata Terelueli - United Goonational Movement</label>
             </div>
+            <div class="candidate-option">
+                <input type="radio" id="candidate2" name="vote" value="candidate2">
+                <label for="candidate2">Mari Kapanadze - Democratic Alliance</label>
+            </div>
+            <div class="candidate-option">
+                <input type="radio" id="candidate3" name="vote" value="candidate3">
+                <label for="candidate3">Giorgi Chikhladze - People's Progress Party</label>
+            </div>
+            <div class="candidate-option">
+                <input type="radio" id="candidate4" name="vote" value="candidate4">
+                <label for="candidate4">Nino Tsiklauri - National Reform Movement</label>
+            </div>
+            <div class="candidate-option">
+                <input type="radio" id="candidate5" name="vote" value="candidate5">
+                <label for="candidate5">Davit Kvaratskhelia - Unity Coalition</label>
+            </div>
             <button type="submit" id="submitButton" disabled>Submit</button>
         </form>
         <p id="successMessage" class="success-message">Your vote has been submitted. Thank you for voting!</p>
@@ -94,10 +110,12 @@
         const form = document.getElementById('votingForm');
         const submitButton = document.getElementById('submitButton');
         const successMessage = document.getElementById('successMessage');
-        const radioInput = document.getElementById('candidate1');
+        const radioInputs = document.querySelectorAll('input[type="radio"]');
 
-        radioInput.addEventListener('change', function() {
-            submitButton.disabled = !this.checked;
+        radioInputs.forEach(input => {
+            input.addEventListener('change', function() {
+                submitButton.disabled = !this.checked;
+            });
         });
 
         form.addEventListener('submit', function(e) {
