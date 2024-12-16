@@ -76,12 +76,19 @@
             cursor: not-allowed;
         }
 
-        .success-message {
+        .message {
             display: none;
-            color: #16a34a;
             text-align: center;
             margin-top: 16px;
             font-weight: 500;
+        }
+
+        .success-message {
+            color: #16a34a;
+        }
+
+        .already-voted-message {
+            color: #dc2626;
         }
     </style>
 </head>
@@ -89,26 +96,47 @@
     <div class="voting-card">
         <h1>სერვერის მე-7 მოწვევის საპარლამენტო არჩევნები</h1>
         <img src=../besko.png alt="BESKO Logo" class="logo-image">
-        <h2>შემოხაზეთ სასურველი კანდიდატი:</h2>
-        <form id="votingForm">
-            <div class="candidate-option">
-                <input type="radio" id="candidate1" name="vote" value="candidate1">
-                <label for="candidate1">ბათა ტერელუელი — ერთიანი გუნერთიანებული მოძრაობა</label>
-            </div>
-            <div class="candidate-option">
-                <input type="radio" id="candidate3" name="vote" value="candidate3">
-                <label for="candidate3">დიმა ამირანაშვილი — კოალიცია "ჩილექსებისთვის"</label>
-            </div>
-            <button type="submit" id="submitButton" disabled>დასრულება</button>
-        </form>
-        <p id="successMessage" class="success-message">თქვენი ხმა დაფიქსირდა. მადლობა ხმის მიცემისთვის!</p>
+        <div id="votingContent">
+            <h2>შემოხაზეთ სასურველი კანდიდატი:</h2>
+            <form id="votingForm">
+                <div class="candidate-option">
+                    <input type="radio" id="candidate1" name="vote" value="candidate1">
+                    <label for="candidate1">ბათა ტერელუელი — ერთიანი გუნერთიანებული მოძრაობა</label>
+                </div>
+                <div class="candidate-option">
+                    <input type="radio" id="candidate3" name="vote" value="candidate3">
+                    <label for="candidate3">დიმა ამირანაშვილი — კოალიცია "ჩილექსებისთვის"</label>
+                </div>
+                <button type="submit" id="submitButton" disabled>დასრულება</button>
+            </form>
+        </div>
+        <p id="successMessage" class="message success-message">თქვენი ხმა დაფიქსირდა. მადლობა ხმის მიცემისთვის!</p>
+        <p id="alreadyVotedMessage" class="message already-voted-message">თქვენ უკვე მიეცით ხმა. ერთ ამომრჩეველს მხოლოდ ერთხელ შეუძლია ხმის მიცემა.</p>
     </div>
 
     <script>
+        const votingContent = document.getElementById('votingContent');
         const form = document.getElementById('votingForm');
         const submitButton = document.getElementById('submitButton');
         const successMessage = document.getElementById('successMessage');
+        const alreadyVotedMessage = document.getElementById('alreadyVotedMessage');
         const radioInputs = document.querySelectorAll('input[type="radio"]');
+
+        // Check if user has already voted
+        function hasVoted() {
+            return localStorage.getItem('hasVoted') === 'true';
+        }
+
+        // Mark user as voted
+        function markAsVoted() {
+            localStorage.setItem('hasVoted', 'true');
+        }
+
+        // Check voting status on page load
+        if (hasVoted()) {
+            votingContent.style.display = 'none';
+            alreadyVotedMessage.style.display = 'block';
+        }
 
         radioInputs.forEach(input => {
             input.addEventListener('change', function() {
@@ -118,8 +146,14 @@
 
         form.addEventListener('submit', function(e) {
             e.preventDefault();
-            form.style.display = 'none';
-            successMessage.style.display = 'block';
+            if (!hasVoted()) {
+                markAsVoted();
+                votingContent.style.display = 'none';
+                successMessage.style.display = 'block';
+            } else {
+                votingContent.style.display = 'none';
+                alreadyVotedMessage.style.display = 'block';
+            }
         });
     </script>
 </body>
