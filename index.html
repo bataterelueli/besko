@@ -90,6 +90,26 @@
         .already-voted-message {
             color: #dc2626;
         }
+
+        .results-button {
+            display: inline-block;
+            background-color: #2563eb;
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            margin-top: 16px;
+            transition: background-color 0.2s;
+        }
+
+        .results-button:hover {
+            background-color: #1d4ed8;
+        }
+
+        .success-container {
+            display: none;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -110,16 +130,22 @@
                 <button type="submit" id="submitButton" disabled>დასრულება</button>
             </form>
         </div>
-        <p id="successMessage" class="message success-message">თქვენი ხმა დაფიქსირდა. მადლობა ხმის მიცემისთვის!</p>
-        <p id="alreadyVotedMessage" class="message already-voted-message">თქვენ უკვე მიეცით ხმა. ერთ ამომრჩეველს მხოლოდ ერთხელ შეუძლია ხმის მიცემა.</p>
+        <div id="successContainer" class="success-container">
+            <p class="message success-message">თქვენი ხმა დაფიქსირდა. მადლობა ხმის მიცემისთვის!</p>
+            <a href="shedegebi.html" class="results-button">არჩევნების შედეგების ნახვა</a>
+        </div>
+        <div id="alreadyVotedContainer" class="success-container">
+            <p class="message already-voted-message">თქვენ უკვე მიეცით ხმა. ერთ ამომრჩეველს მხოლოდ ერთხელ შეუძლია ხმის მიცემა.</p>
+            <a href="shedegebi.html" class="results-button">არჩევნების შედეგების ნახვა</a>
+        </div>
     </div>
 
     <script>
         const votingContent = document.getElementById('votingContent');
         const form = document.getElementById('votingForm');
         const submitButton = document.getElementById('submitButton');
-        const successMessage = document.getElementById('successMessage');
-        const alreadyVotedMessage = document.getElementById('alreadyVotedMessage');
+        const successContainer = document.getElementById('successContainer');
+        const alreadyVotedContainer = document.getElementById('alreadyVotedContainer');
         const radioInputs = document.querySelectorAll('input[type="radio"]');
 
         // Check if user has already voted
@@ -135,7 +161,7 @@
         // Check voting status on page load
         if (hasVoted()) {
             votingContent.style.display = 'none';
-            alreadyVotedMessage.style.display = 'block';
+            alreadyVotedContainer.style.display = 'block';
         }
 
         radioInputs.forEach(input => {
@@ -149,10 +175,10 @@
             if (!hasVoted()) {
                 markAsVoted();
                 votingContent.style.display = 'none';
-                successMessage.style.display = 'block';
+                successContainer.style.display = 'block';
             } else {
                 votingContent.style.display = 'none';
-                alreadyVotedMessage.style.display = 'block';
+                alreadyVotedContainer.style.display = 'block';
             }
         });
     </script>
