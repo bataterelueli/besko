@@ -125,25 +125,17 @@
         const radioInputs = document.querySelectorAll('input[type="radio"]');
 
         // Check if user has already voted
-        function hasVoted() {
-            return localStorage.getItem('hasVoted') === 'true';
+        function nuIchyitebiYleo() {
+            return localStorage.getItem('nuIchyitebiYleo') === 'true';
         }
 
         // Mark user as voted
         function markAsVoted() {
-            localStorage.setItem('hasVoted', 'true');
-        }
-
-        function yleYveri() {
-            localStorage.setItem('yleYveri', 'true');
-        }
-
-        function gaajviAqedanNuIchyitebi() {
-            localStorage.setItem('gaajviAqedanNuIchyitebi', 'true');
+            localStorage.setItem('nuIchyitebiYleo', 'true');
         }
 
         // Check voting status on page load
-        if (hasVoted()) {
+        if (nuIchyitebiYleo()) {
             votingContent.style.display = 'none';
             alreadyVotedMessage.style.display = 'block';
         }
@@ -156,7 +148,7 @@
 
         form.addEventListener('submit', function(e) {
             e.preventDefault();
-            if (!hasVoted()) {
+            if (!nuIchyitebiYleo()) {
                 markAsVoted();
                 votingContent.style.display = 'none';
                 successMessage.style.display = 'block';
