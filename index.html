@@ -42,22 +42,11 @@
         }
 
         .button-container {
-            display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-align : center;
-  -moz-box-align    : center;
-  -ms-flex-align    : center;
-  -webkit-align-items : center;
-  align-items : center ;
-  justify-content : center;
-  -webkit-justify-content : center;
-  -webkit-box-pack : center;
-  -moz-box-pack : center;
-  -ms-flex-pack : center;
-           
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            max-width: 400px;
+            margin: 0 auto;
         }
 
         .nav-button {
@@ -114,9 +103,6 @@
 
         <div class="button-container">
             <a href="archevnebi.html" class="nav-button vote-button">ხმის მიცემა</a>
-        </div>
-        <div class="button-container"></div>
-        <div class="button-container">
             <a href="shedegebi.html" class="nav-button results-button">შედეგები</a>
         </div>
 
