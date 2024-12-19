@@ -124,15 +124,15 @@
         const alreadyVotedMessage = document.getElementById('alreadyVotedMessage');
         const radioInputs = document.querySelectorAll('input[type="radio"]');
 
-        function nuIchyitebiYleo() {
-            return localStorage.getItem('nuIchyitebiYleo') === 'true';
+        function chqimGhirebuleba() {
+            return localStorage.getItem('chqimGhirebuleba') === 'true';
         }
 
         function markAsVoted() {
-            localStorage.setItem('nuIchyitebiYleo', 'true');
+            localStorage.setItem('chqimGhirebuleba', 'true');
         }
 
-        if (nuIchyitebiYleo()) {
+        if (chqimGhirebuleba()) {
             votingContent.style.display = 'none';
             alreadyVotedMessage.style.display = 'block';
         }
@@ -145,7 +145,7 @@
 
         form.addEventListener('submit', function(e) {
             e.preventDefault();
-            if (!nuIchyitebiYleo()) {
+            if (!chqimGhirebuleba()) {
                 markAsVoted();
                 votingContent.style.display = 'none';
                 successMessage.style.display = 'block';
