@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="არჩევნების შედეგები">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="ნახეთ არჩევნების შედეგები">
+    <meta property="og:image" content="https://archevnebi.terelueli.com/archevnebi3.png">
+    <link rel="icon" href="https://archevnebi.terelueli.com/favicon.png?">
+    <title>მე-7 მოწვევის საპარლამენტო არჩევნების შედეგები</title>
+    <style>
+        body {
+            font-family: arial, -apple-system, sans-serif;
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .results-card {
+            background: white;
+            padding: 24px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #1a1a1a;
+            margin-bottom: 16px;
+        }
+
+        .logo-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 24px;
+        }
+
+        .result-bar {
+            margin-bottom: 24px;
+        }
+
+        .candidate-name {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 24px;
+            background-color: #e0e0e0;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: green;
+            transition: width 1s ease-in-out;
+        }
+
+        .vote-details {
+            display: flex;
+            justify-content: space-between;
+            font-size: 16px;
+            color: #666;
+        }
+
+        .total-votes {
+            text-align: center;
+            margin-top: 32px;
+            padding-top: 16px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .timestamp {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            margin-top: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="results-card">
+        <h1>სერვერის მე-7 მოწვევის საპარლამენტო არჩევნების შედეგები</h1>
+        <img src="../archevnebi3.png" alt="BESKO Logo" class="logo-image">
+        
+        <div class="result-bar">
+            <div class="candidate-name">ბათა ტერელუელი — ერთიანი გუნერთიანებული მოძრაობა</div>
+            <div class="progress-container">
+                <div class="progress-bar" style="width: 53%;"></div>
+            </div>
+            <div class="vote-details">
+                <span>16 ხმა</span>
+                <span>53%</span>
+            </div>
+        </div>
+
+        <div class="result-bar">
+            <div class="candidate-name">დიმა ამირანაშვილი — კოალიცია "ჩილექსებისთვის"</div>
+            <div class="progress-container">
+                <div class="progress-bar" style="width: 46%;"></div>
+            </div>
+            <div class="vote-details">
+                <span>14 ხმა</span>
+                <span>46%</span>
+            </div>
+        </div>
+
+        <div class="total-votes">
+            <h3>სულ დაფიქსირდა 30 ხმა</h3>
+            <p>ამომრჩეველთა აქტივობა: 75%</p>
+        </div>
+
+        <div class="timestamp">
+            ბოლო განახლება: 20 დეკემბერი, 2024 - 20:00
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const bars = document.querySelectorAll('.progress-bar');
+            bars.forEach(bar => {
+                const targetWidth = bar.style.width;
+                bar.style.width = '0';
+                setTimeout(() => {
+                    bar.style.width = targetWidth;
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>
